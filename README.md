@@ -1,4 +1,4 @@
 jakidy
 ======
 
-This is a [https://www.djangoproject.com/](Django) based Web Application.
+This is a [Django](https://www.djangoproject.com) based Web Application.
