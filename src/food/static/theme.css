@@ -1,0 +1,19 @@
+@media all and (min-width: 481px) {
+    body {
+        width: 480px;
+        margin: 0 auto
+    }
+}
+
+.fieldgroup input {
+    display: inline-block !important
+}
+.fieldgroup.by4 input {
+    max-width: 23%
+}
+.fieldgroup.by3 input {
+    max-width: 31%
+}
+.fieldgroup.by2 input {
+    max-width: 47%
+}

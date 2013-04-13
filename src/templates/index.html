@@ -23,12 +23,108 @@
  
  <div id="newfood">
   <div class="toolbar">
-   <h1>Jakidy</h1>
-   <a href="#" class="cancel">Cancel</a>
+   <h1>New Food</h1>
+   <a href="#" class="button cancel">Cancel</a>
   </div>
-  <form>
-   <ul>
-    <li>Hi</li>
+  <form method="post">
+   <ul class="rounded">
+    
+    <!-- Names-->
+    
+    <li>
+     <input type="text" name="name" placeholder="Common name" maxlength="45"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+    </li>
+    <li class="fieldgroup by2">
+     <input type="text" name="family" placeholder="Family" maxlength="45"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="text" name="species" placeholder="Species" maxlength="45"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+    </li>
+    
+    
+    <!-- Calories -->
+    
+    <li class="fieldgroup by4">
+     <input type="number" name="kcal" placeholder="kcal"
+      min="0" max="9999" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="kcc" placeholder="carb"
+      min="0" max="9999" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="kcf" placeholder="fat"
+      min="0" max="9999" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="kcp" placeholder="protein"
+      min="0" max="9999" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+    </li>
+    
+    
+    <!-- Carbs -->
+    
+    <li class="fieldgroup by4">
+     <input type="number" name="carbs" placeholder="Carbs (g)"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="sugar" placeholder="sugar"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="fiber" placeholder="fiber"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="starch" placeholder="starch"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+    </li>
+    
+    
+    <!-- Fats -->
+    
+    <li class="fieldgroup by4">
+     <input type="number" name="fats" placeholder="Fats (g)"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="monounsat" placeholder="monounsaturated"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="polyunsat" placeholder="polyunsaturated"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="saturated" placeholder="saturated"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+    </li>
+    
+    
+    <!-- Misc -->
+    
+    <li class="fieldgroup by3">
+     <input type="number" name="proteins" placeholder="Proteins (g)"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="water" placeholder="Water (g)"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+     <input type="number" name="ash" placeholder="Ash (g)"
+      min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" />
+    </li>
+    <li>State:
+     <input type="radio" id="newfood-state-F" name="state" value="F" checked="checked" />
+     <label for="newfood-state-F">fresh</label>
+     <input type="radio" id="newfood-state-D" name="state" value="D" />
+     <label for="newfood-state-D">dry</label>
+    </li>
+    <li>
+     <textarea name="notes" placeholder="Notes"
+      autocomplete="off" autocapitalize="off" autocorrect="off"></textarea>
+    </li>
+    
+    
+    <li>
+     <input type="submit" value="Save" class="submit" />
+    </li>
    </ul>
   </form>
  </div>
