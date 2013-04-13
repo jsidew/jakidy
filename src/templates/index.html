@@ -16,9 +16,15 @@
    <h1>Jakidy</h1>
    <a href="#newfood" class="button flipright">+</a>
   </div>
-  <div>
-   <p>Some content goes here</p>
-  </div>
+  <ul class="edgetoedge">
+   {% for f in foods %}
+    <li class="arrow">
+        <a href="#f{{ f.id }}">{{ f.name|title }},
+         <em>{{f.food.kcal}} kcal
+          ({{ f.food.kcc_cent }}/{{ f.food.kcf_cent }}/{{ f.food.kcp_cent }})</em></a>
+    </li>
+   {% endfor %}
+  </ul>
  </div>
  
  <div id="newfood">
@@ -27,19 +33,23 @@
    <a href="#" class="button cancel">Cancel</a>
   </div>
   <form method="post">
+   
+   {% csrf_token %}
+   
    <ul class="rounded">
     
     <!-- Names-->
     
     <li>
      <input type="text" name="name" placeholder="Common name" maxlength="45"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
     <li class="fieldgroup by2">
      <input type="text" name="family" placeholder="Family" maxlength="45"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off"
+      required="required" />
      <input type="text" name="species" placeholder="Species" maxlength="45"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
     
     
@@ -48,16 +58,16 @@
     <li class="fieldgroup by4">
      <input type="number" name="kcal" placeholder="kcal"
       min="0" max="9999" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="kcc" placeholder="carb"
       min="0" max="9999" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="kcf" placeholder="fat"
       min="0" max="9999" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="kcp" placeholder="protein"
       min="0" max="9999" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
     
     
@@ -66,16 +76,16 @@
     <li class="fieldgroup by4">
      <input type="number" name="carbs" placeholder="Carbs (g)"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="sugar" placeholder="sugar"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="fiber" placeholder="fiber"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="starch" placeholder="starch"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
     
     
@@ -84,16 +94,16 @@
     <li class="fieldgroup by4">
      <input type="number" name="fats" placeholder="Fats (g)"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="monounsat" placeholder="monounsaturated"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="polyunsat" placeholder="polyunsaturated"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="saturated" placeholder="saturated"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
     
     
@@ -102,13 +112,13 @@
     <li class="fieldgroup by3">
      <input type="number" name="proteins" placeholder="Proteins (g)"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="water" placeholder="Water (g)"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="ash" placeholder="Ash (g)"
       min="0" max="99" step="0.01"
-      autocomplete="off" autocapitalize="off" autocorrect="off" />
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
     <li>State:
      <input type="radio" id="newfood-state-F" name="state" value="F" checked="checked" />
@@ -128,6 +138,58 @@
    </ul>
   </form>
  </div>
+ 
+ {% for f in foods %}
+  <div id="f{{ f.id }}">
+   <div class="toolbar">
+   <h1>{{ f.name|title }}</h1>
+   <a href="#" class="button back">back</a>
+   </div>
+   <div>
+    <ul class="foodlist">
+     <li>
+      <!-- ({{ f.food.get_state_display }}) -->
+      {{ f.food.kcal }} kcal
+      
+      <p>{{ f.food.kcc_cent }}% from carbs,
+            {{ f.food.kcf_cent }}% from fats,
+            {{ f.food.kcp_cent }}% from protein</p>
+     </li>
+     <li>
+      Carbohydrates
+      <p>{{ f.food.carbs }}g ~ {{ f.food.sugar_cent }}% sugar,
+            {{ f.food.fiber_cent }}% fiber,
+            {{ f.food.starch_cent }}% starch</p>
+     </li>
+     <li>
+      Fats
+      <p>{{ f.food.fats }}g ~ {{ f.food.monounsat }}% monounsaturated,
+            {{ f.food.polyunsat }}% polyunsaturated,
+            {{ f.food.saturated }}% saturated</p>
+     </li>
+     <li>
+      Protein
+      <p>{{ f.food.proteins }}g</p>
+     </li>
+     <li>
+      Water
+      <p>{{ f.food.water }}g</p>
+     </li>
+     <li>
+      Ash
+      <p>{{ f.food.ash }}g</p>
+     </li>
+     {% if f.notes %}
+     <li>
+      Notes
+      <p>{{ f.notes }}</p>
+     </li>
+     {% endif %}
+    </ul>
+   </div>
+  </div>
+ {% endfor %}
+ 
  
 </body>
 </html>

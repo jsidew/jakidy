@@ -17,3 +17,10 @@
 .fieldgroup.by2 input {
     max-width: 47%
 }
+
+ul.foodlist li {
+  text-align: center  
+}
+ul.foodlist li p {
+    font-weight: 400
+}

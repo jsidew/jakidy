@@ -11,7 +11,15 @@ $("#newfood .cancel").on('click', function() {
 });
 
 $('#newfood form').on('submit', function() {
-    alert($(this).serialize());
+    $.post('/food/save', $(this).serialize(), function(data) {
+        if(data.message !== 'OK') {
+            console.error(data.message);
+        } else {
+            $("#newfood .cancel").trigger('click');
+        }
+    }, 'json').fail(function() {
+        console.error('something went wrong!');
+    });
     return false;
 });
 
