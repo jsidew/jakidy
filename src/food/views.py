@@ -4,11 +4,11 @@ from django.http import HttpResponse
 from django.template import RequestContext
 # from django.utils.simplejson import dumps
 
-from food.models import Food, FoodName
+from food.models import Food
 
 def index(request):
-    fn = FoodName.objects.filter(lang='EN').order_by('name')
-    c = {'foods':fn} 
+    f = Food.objects.all().order_by('name')
+    c = {'foods' : f} 
     c.update(csrf(request))
     return render_to_response('index.html', c,
                               context_instance=RequestContext(request))
@@ -44,33 +44,21 @@ def manifest(request):
 def save(request):
     data = ''
     try:
-        food = Food.objects.create(
-            family = request.POST['family'],
-            species = request.POST['species'],
-            kcal = request.POST['kcal'],
-            kcc = request.POST['kcc'],
-            kcf = request.POST['kcf'],
-            kcp = request.POST['kcp'],
-            carbs = request.POST['carbs'],
-            sugar = request.POST['sugar'],
-            fiber = request.POST['fiber'],
-            starch = request.POST['starch'],
-            fats = request.POST['fats'],
-            monounsat = request.POST['monounsat'],
-            polyunsat = request.POST['polyunsat'],
-            saturated = request.POST['saturated'],
-            proteins = request.POST['proteins'],
-            water = request.POST['water'],
-            ash = request.POST['ash'],
-            state = request.POST['state'],
-        )
+        rid = request.POST['id']
+        if rid:
+            food = Food.objects.get(pk=int(rid))
+            food.name = request.POST['name']
+            food.protein = request.POST['protein']
+            food.carbs = request.POST['carbs']
+            food.fat = request.POST['fat']
+        else:
+            food = Food.objects.create(
+                name = request.POST['name'],
+                protein = request.POST['protein'],
+                carbs = request.POST['carbs'],
+                fat = request.POST['fat']
+            )
         food.save()
-        foodname = FoodName.objects.create(
-            name = request.POST['name'],
-            food = food,
-            notes = request.POST['notes'],
-        )
-        foodname.save()
         data = '{"message":"OK"}'
     except:
         data = '{"message":"KO"}'

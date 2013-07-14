@@ -24,3 +24,7 @@ ul.foodlist li {
 ul.foodlist li p {
     font-weight: 400
 }
+
+#home .content em {
+    font-size: .8em
+}
