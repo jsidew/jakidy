@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html manifest="jakidy.manifest">
 <head>
     <meta charset="utf-8" />
     <title>Jakidy</title>
     <style type="text/css" media="screen">
-     @import "/static/jqtouch.css";
-     @import "/static/theme.css";
+     @import "{{ STATIC_URL }}jqtouch.css";
+     @import "{{ STATIC_URL }}theme.css";
     </style>
- <script src="/static/libs.js" type="text/javascript" charset="utf-8"></script>
- <script src="/static/food.js" type="text/javascript" charset="utf-8"></script>
+ <script src="{{ STATIC_URL }}libs.js" type="text/javascript" charset="utf-8"></script>
+ <script src="{{ STATIC_URL }}food.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
- <div id="home">
+ <div id="home" class="current">
+  
   <div class="toolbar">
    <h1>Jakidy</h1>
    <a href="#newfood" class="button flipright">+</a>

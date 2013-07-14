@@ -1,8 +1,10 @@
 $(function() {
 
-var jQT = $.jQTouch({
+
+window.jQT = $.jQTouch({
     icon: 'icon.png',
-    statusBar: 'black'
+    statusBar: 'black',
+    useFastTouch: false
 });
 
 

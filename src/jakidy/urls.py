@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'food.views.index', name='home'),
     url(r'^food/save$', 'food.views.save', name='savefood'),
+    url(r'^jakidy[.]manifest', 'food.views.manifest', name='manifest'),
     # url(r'^jakidy/', include('jakidy.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
