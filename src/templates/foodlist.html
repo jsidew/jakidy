@@ -1,0 +1,30 @@
+ <div id="foodlist">
+  
+  <div class="toolbar">
+   <h1>Food list</h1>
+   <a href="#home" class="back">back</a>
+   <a href="#newfood" class="button flipright">+ new food</a>
+  </div>
+  <div class="content">
+  <ul class="edgetoedge">
+   {% for f in foods %}
+    <li class="arrow"
+         data-id="{{f.id}}"
+         data-name="{{f.name}}"
+         data-protein="{{ f.protein }}"
+         data-carbs="{{ f.carbs }}"
+         data-fat="{{ f.fat }}"
+         data-price="{{ f.price }}"
+    ><a href="#" class="slideright">{{ f.name|title }}</a>
+        <p><em
+            class="protein">{{ f.protein }}</em>:<em
+            class="carbs">{{ f.carbs }}</em>:<em
+            class="fat">{{ f.fat }}g</em>
+         <em class="calories">{{ f.calories_tot }}kcal</em>
+         <em class="price">€{{ f.price }}/kg</em>
+         </p>
+    </li>
+   {% endfor %}
+  </ul>
+  </div>
+ </div>

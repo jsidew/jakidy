@@ -1,0 +1,55 @@
+ <div id="meals">
+  
+  <div class="toolbar">
+   <h1>Meals</h1>
+   <a href="#home" class="back">back</a>
+   <a href="#newmeal" class="button flipright">+ new meal</a>
+  </div>
+  <div class="content">
+      <ul class="edgetoedge">
+        {% for m in meals %}
+        <li>{{ m.name }} <em>(€{{ m.macros.price }})</em>
+            <p><em>{{ m.macros.protein }}:{{ m.macros.carbs }}:{{ m.macros.fat }}g
+            {{ m.macros.kcal}}kcal</em></p>
+        <p class="smaller label">{{ m.label }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+  </div>
+ </div>
+
+ <div id="newmeal">
+  
+  <div class="toolbar">
+   <h1>Edit Meal</h1>
+   <a href="#meals" class="cancel">cancel</a>
+  </div>
+  <div class="content">
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="" />
+  <ul class="rounded">
+   <li>
+     <input type="text" name="name" placeholder="Meal name" maxlength="45"
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
+   </li>
+   <li><textarea name="label" placeholder="Ingredients"
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
+   </li>
+   {% for f in foods %}
+    <li class="fieldgroup by2meals">
+        <input type="checkbox" id="list4meals-food{{ f.id }}" name="food[{{f.id}}]">
+        <label for="list4meals-food{{ f.id }}">{{ f.name|title }}</label>
+        <input type="number" name="grams[{{f.id}}]" placeholder="grams"
+          min="0.01" max="9999" step="0.01"
+          autocomplete="off" autocapitalize="off" autocorrect="off" />
+    </li>
+   {% endfor %}
+    <li>
+     <input type="submit" value="Save" class="submit" />
+    </li>
+  </ul>
+</form>
+  </div>
+ </div>
+

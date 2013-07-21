@@ -1,0 +1,21 @@
+ <div id="list4meals">
+  
+  <div class="toolbar">
+   <h1>Food list</h1>
+   <a href="#" class="back">back</a>
+   <a href="#newfood" class="button flipright">+ new food</a>
+  </div>
+  <div class="content">
+  <form method="post">
+    {% csrf_token %}
+  <ul class="rounded">
+   {% for f in foods %}
+    <li class="arrow">
+        <input type="checkbox" id="list4meals-food{{ f.id }}" name="food[]" data-id="{{f.id}}">
+        <label for="list4meals-food{{ f.id }}">{{ f.name|title }}</label>
+    </li>
+   {% endfor %}
+  </ul>
+</form>
+  </div>
+ </div>

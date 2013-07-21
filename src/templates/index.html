@@ -16,20 +16,11 @@
   
   <div class="toolbar">
    <h1>Jakidy</h1>
-   <a href="#newfood" class="button flipright">+</a>
   </div>
   <div class="content">
   <ul class="edgetoedge">
-   {% for f in foods %}
-    <li class="arrow">
-        <a href="#" data-id="{{f.id}}" data-name="{{f.name}}" class="flipright">{{ f.name|title }},
-         <em
-            class="protein" data-val="{{ f.protein }}">{{ f.protein }}</em>:<em
-            class="carbs" data-val="{{ f.carbs }}">{{ f.carbs }}</em>:<em
-            class="fat" data-val="{{ f.fat }}">{{ f.fat }}g</em>
-         <em class="calories">{{ f.calories_tot }}kcal</em></a>
-    </li>
-   {% endfor %}
+    <li class="arrow"><a href="#foodlist">Food list</a></li>
+    <li class="arrow"><a href="#meals">Meals</a></li>
   </ul>
   </div>
  </div>
@@ -37,7 +28,7 @@
  <div id="newfood">
   <div class="toolbar">
    <h1>Edit Food</h1>
-   <a href="#" class="button cancel">Cancel</a>
+   <a href="#foodlist" class="button cancel">Cancel</a>
   </div>
   <div class="content">
   <form method="post">
@@ -51,7 +42,7 @@
      <input type="text" name="name" placeholder="Common name" maxlength="45"
       autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
-    <li class="fieldgroup by3">
+    <li class="fieldgroup by4">
     <input type="number" name="protein" placeholder="Protein (g)"
       min="0" max="99" step="0.01"
       autocomplete="off" autocapitalize="off" autocorrect="off" required="required" /> 
@@ -60,6 +51,9 @@
       autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
      <input type="number" name="fat" placeholder="Fat (g)"
       min="0" max="99" step="0.01"
+      autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
+     <input type="number" name="price" placeholder="€/kg"
+      min="0.10" max="500" step="0.01"
       autocomplete="off" autocapitalize="off" autocorrect="off" required="required" />
     </li>
     <li>

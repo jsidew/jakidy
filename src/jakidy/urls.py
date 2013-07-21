@@ -7,7 +7,10 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'food.views.index', name='home'),
+    url(r'^food/list$', 'food.views.foodlist', name='foodlist'),
+    url(r'^food/meals$', 'food.views.meals', name='meals'),
     url(r'^food/save$', 'food.views.save', name='savefood'),
+    url(r'^food/savemeal$', 'food.views.savemeal', name='savemeal'),
     url(r'^jakidy[.]manifest', 'food.views.manifest', name='manifest'),
     # url(r'^jakidy/', include('jakidy.foo.urls')),
 

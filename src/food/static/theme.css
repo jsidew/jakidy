@@ -17,6 +17,10 @@
 .fieldgroup.by2 input {
     max-width: 47%
 }
+.fieldgroup.by2meals input[type="number"] {
+    max-width: 4em;
+    float: right;
+}
 
 ul.foodlist li {
   text-align: center  
@@ -26,5 +30,10 @@ ul.foodlist li p {
 }
 
 #home .content em {
+    font-size: .8em
+}
+
+p.smaller {
+    font-weight: normal;
     font-size: .8em
 }
